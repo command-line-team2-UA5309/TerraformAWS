@@ -15,11 +15,6 @@ terraform {
   }
 }
 
-provider "aws" {
-  region  = var.aws_region
-  profile = var.aws_profile
-}
-
 resource "aws_s3_bucket" "terraform_state" {
   bucket = var.s3_bucket_name
 

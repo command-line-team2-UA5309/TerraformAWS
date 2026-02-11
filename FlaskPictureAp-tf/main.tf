@@ -1,7 +1,3 @@
-provider "aws" {
-  region = var.aws_region
-}
-
 resource "aws_default_vpc" "default" {
   tags = {
     Name = "Default VPC"
@@ -9,7 +5,8 @@ resource "aws_default_vpc" "default" {
 }
 
 module "security" {
-  source       = "./security_groups"
+  source       = "./modules/security_groups"
   vpc_id       = aws_default_vpc.default.id
-  project_name = var.project_name
+  project_name = local.project_name
+  env          = var.env
 }

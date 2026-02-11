@@ -3,7 +3,6 @@
 *.tfstate.*
 crash.log
 crash.*.log
-*.tfvars
 *.tfvars.json
 .terraformrc
 terraform.rc

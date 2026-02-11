@@ -10,7 +10,7 @@
 
 ### 1. Installing Terraform
 
-Install Terraform using one of the methods following the instructions 
+Install Terraform using one of the methods following the instructions
 from the official website:
 [https://developer.hashicorp.com/terraform/install](https://developer.hashicorp.com/terraform/install)
 
@@ -35,6 +35,18 @@ aws configure
 * AWS Secret Access Key: Your Secret Key
 * Default region name: eu-north-1
 * Default output format: json
+
+### AWS profile activation
+
+```bash
+# Linux / macOS / Git Bash
+export AWS_PROFILE=my-project-profile
+
+# PowerShell (Windows)
+$env:AWS_PROFILE = "my-project-profile"
+
+:: CMD (Windows)
+set AWS_PROFILE=my-project-profile
 
 **Check the connection to AWS:**
 

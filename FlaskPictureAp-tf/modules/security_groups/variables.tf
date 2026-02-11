@@ -4,5 +4,9 @@ variable "vpc_id" {
 }
 variable "project_name" {
   type        = string
-  description = "Project name - passed from the project root"
+  description = "Project name"
+}
+variable "env" {
+  type        = string
+  description = "Environment name"
 }

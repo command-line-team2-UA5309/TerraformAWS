@@ -1,19 +1,15 @@
 variable "aws_region" {
-  description = "AWS region for the resourc"
-  type        = string
-}
-variable "aws_profile" {
-  description = "AWS CLI profile to use"
+  description = "AWS region for the resource"
   type        = string
 }
 
 variable "s3_bucket_name" {
-  description = "Name of the S3 bucket for Terraform state"
+  description = "The unique name of the S3 bucket"
   type        = string
 }
 
 variable "tags" {
-  description = "Tags to apply to resourc"
+  description = "Tags to apply to resource"
   type        = map(string)
   default = {
     Environment = "Development"
