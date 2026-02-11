@@ -6,4 +6,4 @@ locals {
     dns_tcp  = { port = 8600, protocol = "tcp" }
     dns_udp  = { port = 8600, protocol = "udp" }
   }
-} 
+}
