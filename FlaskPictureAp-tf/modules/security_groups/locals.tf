@@ -1,0 +1,9 @@
+locals {
+  consul-port = {
+    rpc      = { port = 8300, protocol = "tcp" }
+    serf_tcp = { port = 8301, protocol = "tcp" }
+    serf_udp = { port = 8301, protocol = "udp" }
+    dns_tcp  = { port = 8600, protocol = "tcp" }
+    dns_udp  = { port = 8600, protocol = "udp" }
+  }
+} 
