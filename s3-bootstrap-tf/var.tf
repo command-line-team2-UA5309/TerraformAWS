@@ -12,8 +12,8 @@ variable "tags" {
   description = "Tags to apply to resource"
   type        = map(string)
   default = {
-    Environment = "Development"
+    env = "dev"
     ManagedBy   = "Terraform"
-    Project     = "Flask-App"
+    Project     = "bird"
   }
 }
