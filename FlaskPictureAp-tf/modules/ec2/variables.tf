@@ -34,3 +34,13 @@ variable "app_instance_count" {
   type        = number
   description = "Number of servers for the application"
 }
+
+variable "public_subnet_id" {
+  description = "ID of the public subnet for Jenkins and LB"
+  type        = string
+}
+
+variable "private_subnet_id" {
+  description = "ID of the private subnet for App, DB and Consul"
+  type        = string
+}

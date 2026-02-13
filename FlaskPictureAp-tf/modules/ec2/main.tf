@@ -4,7 +4,8 @@ resource "aws_instance" "jenkins" {
   instance_type = var.instance_type_jenkins
   key_name      = var.key_name
 
-  #subnet_id = var.subnet_id
+  subnet_id = var.public_subnet_id
+  associate_public_ip_address = true
 
   vpc_security_group_ids = [
     var.security_group_ids["ssh"],
@@ -22,6 +23,9 @@ resource "aws_instance" "db" {
   ami           = var.ami_id
   instance_type = var.instance_type
   key_name      = var.key_name
+
+  subnet_id     = var.private_subnet_id
+  associate_public_ip_address = false
 
   vpc_security_group_ids = [
     var.security_group_ids["ssh"],
@@ -42,6 +46,10 @@ resource "aws_instance" "lb" {
   ami           = var.ami_id
   instance_type = var.instance_type
   key_name      = var.key_name
+
+  subnet_id = var.public_subnet_id
+  associate_public_ip_address = true
+
 
   vpc_security_group_ids = [
     var.security_group_ids["ssh"],
@@ -64,6 +72,9 @@ resource "aws_instance" "app" {
   instance_type = var.instance_type
   key_name      = var.key_name
 
+  subnet_id     = var.private_subnet_id
+  associate_public_ip_address = false
+
   vpc_security_group_ids = [
     var.security_group_ids["ssh"],
     var.security_group_ids["app"],
@@ -83,6 +94,9 @@ resource "aws_instance" "consul" {
   ami           = var.ami_id
   instance_type = var.instance_type
   key_name      = var.key_name
+
+  subnet_id     = var.private_subnet_id
+  associate_public_ip_address = false
 
   vpc_security_group_ids = [
     var.security_group_ids["ssh"],

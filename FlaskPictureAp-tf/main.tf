@@ -8,6 +8,16 @@ resource "aws_default_vpc" "default" {
   }
 }
 
+####### module "vpc" ##########
+module "vpc" {
+  source       = "./modules/vpc"
+  project_name = var.project_name
+  env          = var.env
+  vpc_cidr     = var.vpc_cidr
+  aws_region   = var.aws_region
+}
+
+####### module "security_groups" #########
 module "security_groups" {
   source       = "./modules/security_groups"
   vpc_id       = aws_default_vpc.default.id
@@ -15,11 +25,14 @@ module "security_groups" {
   env          = var.env
 }
 
-module "app_servers" {
-  source       = "./modules/ec2"
-  key_name     = aws_key_pair.bird_key.key_name
-  project_name = var.project_name
-  env          = var.env
+####### module "ec2" #########
+module "ec2" {
+  source            = "./modules/ec2"
+  key_name          = aws_key_pair.bird_key.key_name
+  project_name      = var.project_name
+  env               = var.env
+  public_subnet_id  = module.vpc.public_subnet_id
+  private_subnet_id = module.vpc.private_subnet_id
   security_group_ids = {
     ssh      = module.security_groups.ssh_sg_id
     db       = module.security_groups.db_sg_id

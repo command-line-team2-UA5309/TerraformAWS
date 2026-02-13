@@ -31,3 +31,7 @@ variable "app_instance_count" {
   type        = number
   description = "Number of servers for the application"
 }
+variable "vpc_cidr" {
+  description = "CIDR block for VPC"
+  type        = string
+}
