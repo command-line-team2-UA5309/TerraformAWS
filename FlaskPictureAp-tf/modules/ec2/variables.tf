@@ -44,3 +44,7 @@ variable "private_subnet_id" {
   description = "ID of the private subnet for App, DB and Consul"
   type        = string
 }
+variable "iam_instance_profile_name" {
+  type    = string
+  default = null
+}

@@ -68,3 +68,12 @@ output "db_ip" {
 output "consul_ip" {
   value = module.ec2.consul_private_ip
 }
+
+#############Output from S3 module########################
+output "images_bucket_name" {
+  value = module.S3_images.bucket_name
+}
+
+output "reports_bucket_name" {
+  value = module.S3_reports.bucket_name
+}
