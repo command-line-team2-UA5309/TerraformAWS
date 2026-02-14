@@ -14,3 +14,20 @@ variable "vpc_id" {
   type        = string
   description = "ID of the VPC where resources will be created"
 }
+variable "ami_id" {
+  description = "AMI ID for EC2 instance"
+  type        = string
+}
+
+variable "instance_type" {
+  description = "EC2 instance type"
+  type        = string
+}
+variable "instance_type_jenkins" {
+  description = "A separate, more powerful instance type for Jenkins instance"
+  type        = string
+}
+variable "app_instance_count" {
+  type        = number
+  description = "Number of servers for the application"
+}
