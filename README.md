@@ -6,18 +6,20 @@
 2. Run `pre-commit install`
 3. Auto-update the config to the latest version `pre-commit autoupdate`
 
-## To get started with Terraform, you need to install Terraform and the AWS CLI
+## Getting Started with Terraform and AWS
 
-## 1. Installing Terraform
+### 1. Installing Terraform
 
-Install Terraform using one of the methods following the instructions from 
-the official website: <https://developer.hashicorp.com/terraform/install>
+Install Terraform using one of the methods following the instructions
+from the official website:
+<https://developer.hashicorp.com/terraform/install>
 
-## 2. Installing AWS CLI
+### 2. Installing AWS CLI
 
-To interact with AWS, install AWS CLI: <https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html>
+To interact with AWS, install AWS CLI:
+<https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html>
 
-## 3. Configuring access
+### 3. Configuring access
 
 After installing the tools, configure access to your account.
 
@@ -34,7 +36,7 @@ aws configure
 - Default region name: eu-north-1
 - Default output format: json
 
-### AWS profile activation
+#### AWS profile activation
 
 ```bash
 # Linux / macOS / Git Bash
@@ -53,32 +55,35 @@ set AWS_PROFILE=my-project-profile
 aws sts get-caller-identity
 ```
 
-## 4. Starting the project
+### 4. Starting the project
 
-### SSH Key Configuration
-To run the terraform apply command and ensure the public key is attached to your instances, 
-you must specify the path to your public key. 
-To access these instances later via SSH, you will need the corresponding private key.
+#### SSH Key Configuration
 
-Update the Configuration: In the file FlaskPictureAp-tf/main.tf, 
-locate the aws_key_pair resource 
-and provide the path to your public key file:
+To run the terraform apply command and ensure the public key is
+attached to your instances, you must specify the path to your
+public key. To access these instances later via SSH, you will
+need the corresponding private key.
+
+Update the Configuration: In the file FlaskPictureAp-tf/main.tf,
+locate the aws_key_pair resource and provide the path to your
+public key file:
 
 ```terraform
 resource "aws_key_pair" "bird_key" {
-  key_name   = "${var.project_name}-${var.env}-key"
+  key_name = "${var.project_name}-${var.env}-key"
   public_key = file("path/to/your/public_key.pub")
 }
 ```
 
-### Accessing Keys:
+#### Accessing Keys
 
-Please contact your Team Lead to receive both the private and public keys.
+Please contact your Team Lead to receive both the private and
+public keys.
+
+#### Running Terraform
 
 ```bash
 terraform init
 terraform plan
 terraform apply
 ```
-
-[EOF]

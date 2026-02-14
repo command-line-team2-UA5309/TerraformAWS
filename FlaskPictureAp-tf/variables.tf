@@ -10,10 +10,6 @@ variable "project_name" {
   description = "The name of project"
 }
 
-variable "vpc_id" {
-  type        = string
-  description = "ID of the VPC where resources will be created"
-}
 variable "ami_id" {
   description = "AMI ID for EC2 instance"
   type        = string
