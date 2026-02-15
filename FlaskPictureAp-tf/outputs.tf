@@ -77,3 +77,15 @@ output "images_bucket_name" {
 output "reports_bucket_name" {
   value = module.S3_reports.bucket_name
 }
+
+output "database_bucket_name" {
+  value = module.S3_database.bucket_name
+}
+
+############# DNS ########################
+output "aws_nameservers" {
+  value = aws_route53_zone.main.name_servers
+}
+output "lb_domain" {
+  value = module.dns.lb_domain
+}

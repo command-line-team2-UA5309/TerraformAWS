@@ -32,3 +32,8 @@ variable "vpc_cidr" {
   type        = string
 }
 
+variable "domain_name" {
+  description = "The domain name for LB"
+  type        = string
+  default     = "command-line.top"
+}
