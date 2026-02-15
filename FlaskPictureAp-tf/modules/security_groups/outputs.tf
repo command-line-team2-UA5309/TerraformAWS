@@ -21,3 +21,6 @@ output "consul_sg_id" {
 output "outbound_all_sg_id" {
   value = aws_security_group.outbound_all.id
 }
+output "jenkins_sg_id" {
+  value       = aws_security_group.jenkins.id
+}

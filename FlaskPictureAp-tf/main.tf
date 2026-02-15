@@ -40,6 +40,8 @@ module "ec2" {
     app      = module.security_groups.app_sg_id
     consul   = module.security_groups.consul_sg_id
     outbound = module.security_groups.outbound_all_sg_id
+    jenkins  = module.security_groups.jenkins_sg_id
+
   }
   ami_id                = var.ami_id
   instance_type         = var.instance_type
