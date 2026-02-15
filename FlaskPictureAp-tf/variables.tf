@@ -10,10 +10,6 @@ variable "project_name" {
   description = "The name of project"
 }
 
-variable "vpc_id" {
-  type        = string
-  description = "ID of the VPC where resources will be created"
-}
 variable "ami_id" {
   description = "AMI ID for EC2 instance"
   type        = string
@@ -31,3 +27,8 @@ variable "app_instance_count" {
   type        = number
   description = "Number of servers for the application"
 }
+variable "vpc_cidr" {
+  description = "CIDR block for VPC"
+  type        = string
+}
+

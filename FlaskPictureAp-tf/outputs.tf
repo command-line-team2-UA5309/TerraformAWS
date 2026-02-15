@@ -1,7 +1,19 @@
+#############Output from the vpc module###################
 output "vpc_id" {
-  value = aws_default_vpc.default.id
+  value = module.vpc.vpc_id
 }
 
+output "public_subnet_id" {
+  value = module.vpc.public_subnet_id
+}
+
+output "private_subnet_id" {
+  value = module.vpc.private_subnet_id
+}
+
+output "vpc_cidr" {
+  value = module.vpc.vpc_cidr
+}
 #############Output from the security_groups module###################
 output "ssh_sg_id" {
   value = module.security_groups.ssh_sg_id
@@ -28,22 +40,40 @@ output "outbound_all_sg_id" {
 }
 
 #############Output from the ec2 module########################
+
 output "jenkins_ip" {
-  value = module.app_servers.jenkins_public_ip
+  value = module.ec2.jenkins_public_ip
+}
+
+output "jenkins_dns" {
+  value = module.ec2.jenkins_public_dns
+}
+
+output "lb_ip" {
+  value = module.ec2.lb_public_ip
+}
+
+output "lb_dns" {
+  value = module.ec2.lb_public_dns
+}
+
+output "app_ips" {
+  value = module.ec2.app_private_ips
 }
 
 output "db_ip" {
-  value = module.app_servers.db_public_ip
-}
-
-output "load_balancer_ip" {
-  value = module.app_servers.lb_public_ip
-}
-
-output "app_server_ips" {
-  value = module.app_servers.app_public_ips
+  value = module.ec2.db_private_ip
 }
 
 output "consul_ip" {
-  value = module.app_servers.consul_public_ip
+  value = module.ec2.consul_private_ip
+}
+
+#############Output from S3 module########################
+output "images_bucket_name" {
+  value = module.S3_images.bucket_name
+}
+
+output "reports_bucket_name" {
+  value = module.S3_reports.bucket_name
 }
