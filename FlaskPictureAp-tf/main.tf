@@ -60,3 +60,18 @@ module "S3_reports" {
   bucket_name       = "${var.project_name}-${var.env}-reports-${random_id.bucket_suffix.hex}"
   versioning_status = "Enabled"
 }
+
+module "S3_database" {
+  source            = "./modules/S3"
+  bucket_name       = "${var.project_name}-${var.env}-database-${random_id.bucket_suffix.hex}"
+  versioning_status = "Enabled"
+}
+
+####### DNS #########
+module "dns" {
+  source      = "./modules/dns"
+  env         = var.env
+  domain_name = var.domain_name
+  zone_id     = aws_route53_zone.main.zone_id
+  lb_ip       = module.ec2.lb_public_ip
+}
