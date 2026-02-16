@@ -9,7 +9,8 @@ resource "aws_instance" "jenkins" {
 
   vpc_security_group_ids = [
     var.security_group_ids["ssh"],
-    var.security_group_ids["outbound"]
+    var.security_group_ids["outbound"],
+    var.security_group_ids["jenkins"]
   ]
   tags = {
     Name        = "${var.project_name}-${var.env}-jenkins"

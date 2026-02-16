@@ -39,6 +39,10 @@ output "outbound_all_sg_id" {
   value = module.security_groups.outbound_all_sg_id
 }
 
+output "jenkins_sg_id" {
+  value = module.security_groups.jenkins_sg_id
+}
+
 #############Output from the ec2 module########################
 
 output "jenkins_ip" {

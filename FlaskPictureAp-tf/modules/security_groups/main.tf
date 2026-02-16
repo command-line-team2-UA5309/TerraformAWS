@@ -42,6 +42,13 @@ resource "aws_security_group" "outbound_all" {
   tags        = { Name = "${var.project_name}-${var.env}-outbound-all-sg" }
 }
 
+resource "aws_security_group" "jenkins" {
+  name        = "${var.project_name}-${var.env}-jenkins-sg"
+  description = "Jenkins traffic on port 8080"
+  vpc_id      = var.vpc_id
+  tags        = { Name = "${var.project_name}-${var.env}-jenkins-sg" }
+}
+
 ####################### Rules ############################
 
 resource "aws_vpc_security_group_egress_rule" "egress_ipv4_all" {
@@ -90,6 +97,17 @@ resource "aws_vpc_security_group_ingress_rule" "db_tcp_5432" {
   ip_protocol                  = "tcp"
   description                  = "Allow traffic PostgreSQL from app"
   tags                         = { Name = "${var.project_name}-${var.env}-db-5432" }
+
+}
+
+resource "aws_vpc_security_group_ingress_rule" "jenkins_8080" {
+  security_group_id = aws_security_group.jenkins.id
+  cidr_ipv4         = "0.0.0.0/0"
+  from_port         = 8080
+  to_port           = 8080
+  ip_protocol       = "tcp"
+  description       = "Ingress Jenkins UI from all"
+  tags              = { Name = "${var.project_name}-${var.env}-jenkins-8080" }
 }
 
 ####################### Consul #######################
